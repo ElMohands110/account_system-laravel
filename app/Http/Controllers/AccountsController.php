@@ -9,13 +9,13 @@ class AccountsController extends Controller
 {
     public function mainAccount() {
         $father_acs = Account::where('account_type', 0)->get();
-        $main_acs = Account::where('account_type', 1)->paginate(10);
+        $main_acs = Account::where('account_type', 1)->paginate(PAGINATE_SIZE);
         return view('accounts.main_account', compact('father_acs', 'main_acs'));
     }
 
     public function subAccount() {
         $main_acs = Account::where('account_type', 1)->get();
-        $sub_acs = Account::where('account_type', 2)->paginate(10);
+        $sub_acs = Account::where('account_type', 2)->paginate(PAGINATE_SIZE);
         return view('accounts.sub_account', compact('main_acs', 'sub_acs'));
     }
 

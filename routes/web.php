@@ -14,15 +14,16 @@ $user->name = "STM Accountant"
 $user->username = "smarttarget"
 $user->password = bcrypt("12345678")
 $user->save()
-receipt document
 */
 
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\DeedOfArrestController;
 use App\Http\Controllers\ExchangeVoucherRegistrationController;
+use App\Http\Controllers\ReportsController;
 use Illuminate\Support\Facades\Route;
 
+const PAGINATE_SIZE = 10;
 
 Route::group(['middleware' => 'guest:accountant'], function () {
     Route::get('/login', [AppController::class, 'goLogin'])->name('go.login');
@@ -58,4 +59,9 @@ Route::group(['middleware' => 'auth:accountant'], function () {
         Route::post('/{id}', [ExchangeVoucherRegistrationController::class, 'updateArrest'])->name('exchange_voucher_registration.update');
         Route::post('/destroy/{id}', [ExchangeVoucherRegistrationController::class, 'destroyArrest'])->name('exchange_voucher_registration.destroy');
     });
+
+    Route::get('/post', [ReportsController::class, 'getPosts'])->name('reports.posts');
+    Route::get('/post/search', [ReportsController::class, 'searchPosts'])->name('reports.post.search');
+    Route::get('/report', [ReportsController::class, 'getReports'])->name('reports.index');
+    Route::get('/report/search', [ReportsController::class, 'searchReports'])->name('reports.search');
 });

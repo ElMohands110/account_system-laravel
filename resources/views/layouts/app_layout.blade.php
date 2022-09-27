@@ -48,12 +48,6 @@
     </style>
 </head>
 <body>
-<div id="loading-wrapper">
-    <div class="spinner-border"></div>
-    <div class="loading-messsage">
-        <span>L</span><span>o</span><span>a</span><span>d</span><span>i</span><span>n</span><span>g</span>
-    </div>
-</div>
 <div class="page-wrapper">
     <nav class="sidebar-wrapper">
         <div class="sidebar-brand">
@@ -98,14 +92,15 @@
                         </div>
                     </li>
 
-                    <li class="sidebar-dropdown @if(Route::current()->getName() == 'reports.index')active @endif">
+                    <li class="sidebar-dropdown @if(Route::current()->getName() == 'reports.posts' || Route::current()->getName() == 'reports.post.search' || Route::current()->getName() == 'reports.index' || Route::current()->getName() == 'reports.search')active @endif">
                         <a href="#">
                             <i class="icon-settings_input_svideo gradient-silver-light"></i>
-                            <span class="menu-text">Reports</span>
+                            <span class="menu-text">Reports && Posts</span>
                         </a>
                         <div class="sidebar-submenu">
                             <ul>
-                                <li><a @if(Route::current()->getName() == 'reports.index') class="current-page" @endif href="">Reports</a></li>
+                                <li><a @if(Route::current()->getName() == 'reports.posts' || Route::current()->getName() == 'reports.post.search') class="current-page" @endif href="{{ route('reports.posts') }}">Posts</a></li>
+                                <li><a @if(Route::current()->getName() == 'reports.index' || Route::current()->getName() == 'reports.search') class="current-page" @endif href="{{ route('reports.index') }}">Reports</a></li>
                             </ul>
                         </div>
                     </li>
