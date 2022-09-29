@@ -58,36 +58,37 @@
         <div class="sidebarMenuScroll">
             <div class="sidebar-menu">
                 <ul>
-                    <li @if(Route::current()->getName() == 'dashboard') class="active-page-link" @endif>
-                        <a href="{{ route('dashboard') }}">
-                            <i class="icon-house_siding gradient-orange"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
+{{--                    <li @if(Route::current()->getName() == 'dashboard') class="active-page-link" @endif>--}}
+{{--                        <a href="{{ route('dashboard') }}">--}}
+{{--                            <i class="icon-house_siding gradient-orange"></i>--}}
+{{--                            <span>Dashboard</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
 
                     <li class="sidebar-dropdown @if(Route::current()->getName() == 'account.sub' || Route::current()->getName() == 'account.main' || Route::current()->getName() == 'account.tree')active @endif">
                         <a href="#">
                             <i class="icon-settings_input_svideo gradient-teal"></i>
-                            <span class="menu-text">Accounts</span>
+                            <span class="menu-text">{{ __('message.accounts') }}</span>
                         </a>
                         <div class="sidebar-submenu">
                             <ul>
-                                <li><a @if(Route::current()->getName() == 'account.main') class="current-page" @endif href="{{ route('account.main') }}">Main Accounts</a></li>
-                                <li><a @if(Route::current()->getName() == 'account.sub') class="current-page" @endif href="{{ route('account.sub') }}">Sub Accounts</a></li>
-                                <li><a @if(Route::current()->getName() == 'account.tree') class="current-page" @endif href="{{ route('account.tree') }}">Accounts Tree</a></li>
+                                <li><a @if(Route::current()->getName() == 'account.main') class="current-page" @endif href="{{ route('account.main') }}">{{ __('message.main_accounts') }}</a></li>
+                                <li><a @if(Route::current()->getName() == 'account.sub') class="current-page" @endif href="{{ route('account.sub') }}">{{ __('message.sub_accounts') }}</a></li>
+                                <li><a @if(Route::current()->getName() == 'account.tree') class="current-page" @endif href="{{ route('account.tree') }}">{{ __('message.accounts_tree') }}</a></li>
                             </ul>
                         </div>
                     </li>
 
-                    <li class="sidebar-dropdown @if(Route::current()->getName() == 'deed_of_arrest.index' || Route::current()->getName() == 'exchange_voucher_registration.index')active @endif">
+                    <li class="sidebar-dropdown @if(Route::current()->getName() == 'deed_of_arrest.index' || Route::current()->getName() == 'exchange_voucher_registration.index' || Route::current()->getName() == 'voucher_entry')active @endif">
                         <a href="#">
                             <i class="icon-settings_input_svideo gradient-red"></i>
-                            <span class="menu-text">Receipts</span>
+                            <span class="menu-text">{{ __('message.receipts') }}</span>
                         </a>
                         <div class="sidebar-submenu">
                             <ul>
-                                <li><a @if(Route::current()->getName() == 'deed_of_arrest.index') class="current-page" @endif href="{{ route('deed_of_arrest.index') }}">Deep Of Arrest</a></li>
-                                <li><a @if(Route::current()->getName() == 'exchange_voucher_registration.index') class="current-page" @endif href="{{ route('exchange_voucher_registration.index') }}">Exchange voucher</a></li>
+                                <li><a @if(Route::current()->getName() == 'deed_of_arrest.index') class="current-page" @endif href="{{ route('deed_of_arrest.index') }}">{{ __('message.deep_of_arrest') }}</a></li>
+                                <li><a @if(Route::current()->getName() == 'exchange_voucher_registration.index') class="current-page" @endif href="{{ route('exchange_voucher_registration.index') }}">{{ __('message.exchange_voucher') }}</a></li>
+                                <li><a @if(Route::current()->getName() == 'voucher_entry.index') class="current-page" @endif href="{{ route('voucher_entry.index') }}">{{ __('message.voucher_entry') }}</a></li>
                             </ul>
                         </div>
                     </li>
@@ -95,12 +96,12 @@
                     <li class="sidebar-dropdown @if(Route::current()->getName() == 'reports.posts' || Route::current()->getName() == 'reports.post.search' || Route::current()->getName() == 'reports.index' || Route::current()->getName() == 'reports.search')active @endif">
                         <a href="#">
                             <i class="icon-settings_input_svideo gradient-silver-light"></i>
-                            <span class="menu-text">Reports && Posts</span>
+                            <span class="menu-text">{{ __('message.reports&posts') }}</span>
                         </a>
                         <div class="sidebar-submenu">
                             <ul>
-                                <li><a @if(Route::current()->getName() == 'reports.posts' || Route::current()->getName() == 'reports.post.search') class="current-page" @endif href="{{ route('reports.posts') }}">Posts</a></li>
-                                <li><a @if(Route::current()->getName() == 'reports.index' || Route::current()->getName() == 'reports.search') class="current-page" @endif href="{{ route('reports.index') }}">Reports</a></li>
+                                <li><a @if(Route::current()->getName() == 'reports.posts' || Route::current()->getName() == 'reports.post.search') class="current-page" @endif href="{{ route('reports.posts') }}">{{ __('message.posts') }}</a></li>
+                                <li><a @if(Route::current()->getName() == 'reports.index' || Route::current()->getName() == 'reports.search') class="current-page" @endif href="{{ route('reports.index') }}">{{ __('message.reports') }}</a></li>
                             </ul>
                         </div>
                     </li>

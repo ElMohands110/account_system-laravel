@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
 use App\Models\DeedOfArrest;
 use App\Models\ExchangeVoucherRegistration;
+use App\Models\VoucherEntry;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -40,14 +42,20 @@ class ReportsController extends Controller
         $date_from = $request->date_from;
         $date_to = $request->date_to;
         $type = $request->type;
-        if ($request->type == 'all') {
-            $results = ExchangeVoucherRegistration::all();
+        if ($request->type == 'حسابات أساسية') {
+            $results = Account::where('account_type', 1)->get();
+        }
+        elseif ($request->type == 'حسابات فرعية') {
+            $results = Account::where('account_type', 2)->get();
         }
         elseif ($request->type == 'سند صرف') {
             $results = ExchangeVoucherRegistration::all();
         }
         elseif ($request->type == 'سند قبض') {
             $results = DeedOfArrest::all();
+        }
+        elseif ($request->type == 'سند قيد') {
+            $results = VoucherEntry::all();
         }
         else {
             $results = [];

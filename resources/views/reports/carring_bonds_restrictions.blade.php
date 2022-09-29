@@ -23,32 +23,32 @@
                 <br>
                 <form action="{{ route('reports.post.search') }}" method="GET" class="container">
                     <div class="my_search">
-                        <div class="search-container">
-                            <div class="input-group m-0">
-                                <input type="date" name="date_from" class="form-control">
-                            </div>
+                        <div class="input-group mb-3 control-dark">
+                            <span class="input-group-text">Date To</span>
+                            <input type="date" name="date_from" class="form-control">
                         </div>
-                        <div class="search-container">
-                            <div class="input-group m-0">
-                                <input type="date" name="date_to" class="form-control">
-                            </div>
+                        <div class="input-group mb-3 control-dark">
+                            <span class="input-group-text">Date To</span>
+                            <input type="date" name="date_to" class="form-control" placeholder="Credit...">
                         </div>
-                        <div class="search-container">
-                            <div class="input-group m-0">
-                                <select type="text" name="type" class="form-control" required>
-                                    <option value="" hidden>-- choose type --</option>
-                                    <option value="all">All</option>
-                                    <option value="سند صرف">سند صرف</option>
-                                    <option value="سند قبض">سند قبض</option>
-                                </select>
-                            </div>
+                        <div class="input-group mb-3 control-dark">
+                            <span class="input-group-text">Type</span>
+                            <select type="text" name="type" class="form-control" required>
+                                <option value="" hidden>-- choose type --</option>
+                                <option value="حسابات أساسية">حسابات أساسية</option>
+                                <option value="حسابات فرعية">حسابات فرعية</option>
+                                <option value="سند صرف">سند صرف</option>
+                                <option value="سند قبض">سند قبض</option>
+                                <option value="سند قيد">سند قيد</option>
+                            </select>
                         </div>
-                        <div class="search-container">
-                            <div class="input-group m-0">
-                                <input type="text" name="posting" class="form-control" placeholder="posting...">
-                            </div>
+                        <div class="input-group mb-3 control-dark">
+                            <span class="input-group-text">Posting</span>
+                            <input type="text" name="posting" class="form-control" placeholder="posting...">
                         </div>
-                        <button type="submit" class="btn btn-dark">Search</button>
+                        <div class="input-group mb-3 control-dark">
+                            <button type="submit" class="btn btn-dark">Search</button>
+                        </div>
                     </div>
                 </form>
                 <div class="card-body">

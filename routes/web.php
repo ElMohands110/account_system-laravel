@@ -21,6 +21,7 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\DeedOfArrestController;
 use App\Http\Controllers\ExchangeVoucherRegistrationController;
 use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\VoucherEntryController;
 use Illuminate\Support\Facades\Route;
 
 const PAGINATE_SIZE = 10;
@@ -58,6 +59,13 @@ Route::group(['middleware' => 'auth:accountant'], function () {
         Route::post('/', [ExchangeVoucherRegistrationController::class, 'storeArrest'])->name('exchange_voucher_registration.store');
         Route::post('/{id}', [ExchangeVoucherRegistrationController::class, 'updateArrest'])->name('exchange_voucher_registration.update');
         Route::post('/destroy/{id}', [ExchangeVoucherRegistrationController::class, 'destroyArrest'])->name('exchange_voucher_registration.destroy');
+    });
+
+    Route::group(['prefix' => 'voucher-entry'], function () {
+        Route::get('/', [VoucherEntryController::class, 'index'])->name('voucher_entry.index');
+        Route::post('/', [VoucherEntryController::class, 'storeArrest'])->name('voucher_entry.store');
+        Route::post('/{id}', [VoucherEntryController::class, 'updateArrest'])->name('voucher_entry.update');
+        Route::post('/destroy/{id}', [VoucherEntryController::class, 'destroyArrest'])->name('voucher_entry.destroy');
     });
 
     Route::get('/post', [ReportsController::class, 'getPosts'])->name('reports.posts');
