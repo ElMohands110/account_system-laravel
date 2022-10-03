@@ -36,10 +36,12 @@ class AccountsController extends Controller
             $father_main_account = Account::where('account_type', 0)->where('account_name', "$request->father_name")->first();
         }
 
+//        return $sub != null ? ++$sub->account_code . '<br>' . $main_sub_account->account_code . "001" : 201 . "001";
+
         Account::create([
             'account_name' => $request->account_name,
             'account_type' => $request->type,
-            'account_code' => $request->type == 1 ? (count($main) > 0 ? ++$main->account_code : $father_main_account->account_code . 01) : (count($sub) > 0 ? ++$sub->account_code : $main_sub_account->account_code . 001),
+            'account_code' => $request->type == 1 ? ($main != null ? ++$main->account_code : $father_main_account->account_code . '01') : ($sub != null ? ++$sub->account_code : $main_sub_account->account_code . '001'),
             'email' => $request->email,
             'phone' => $request->phone,
             'tel' => $request->tel,

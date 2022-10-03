@@ -81,6 +81,10 @@
                                                     <form action="{{ route('account.update', $sub->id) }}" method="POST">
                                                         @csrf
                                                         <div class="col-md-12 col-sm-12 col-12 my_form">
+                                                            <div class="input-group mb-3 control-dark">
+                                                                <span class="input-group-text">Code</span>
+                                                                <input type="text" name="account_code" class="form-control" placeholder="Account Code..." value="{{ $sub->account_code }}">
+                                                            </div>
 
                                                             <div class="input-group mb-3 control-dark">
                                                                 <span class="input-group-text">Main</span>
@@ -179,10 +183,6 @@
                             @csrf
                             <input type="hidden" name="type" value=2>
                             <div class="col-md-12 col-sm-12 col-12 my_form">
-                                <div class="input-group mb-3 control-dark">
-                                    <span class="input-group-text">Code</span>
-                                    <input type="text" name="account_code" class="form-control" placeholder="Account Code...">
-                                </div>
 
                                 <div class="input-group mb-3 control-dark">
                                     <span class="input-group-text">Main</span>
