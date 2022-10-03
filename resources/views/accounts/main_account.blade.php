@@ -14,6 +14,7 @@
                     <div class="card-title">Main Accounts</div>
                     <a class="btn btn-warning" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Add Account</a>
                 </div>
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table v-middle text-center">
@@ -75,10 +76,6 @@
                                                         @csrf
 {{--                                                        <input type="hidden" name="type" value=1>--}}
                                                         <div class="col-md-12 col-sm-12 col-12 my_form">
-                                                            <div class="input-group mb-3 control-dark">
-                                                                <span class="input-group-text">Code</span>
-                                                                <input type="text" name="account_code" class="form-control" placeholder="Account Code..." value="{{ $main->account_code }}">
-                                                            </div>
 
                                                             <div class="input-group mb-3 control-dark">
                                                                 <span class="input-group-text">Name</span>
@@ -112,7 +109,7 @@
                         </table>
                     </div>
 
-                    <div class="paginate_links">
+                    <div class="paginate_links my_form">
                         {{ $main_acs->links() }}
                     </div>
                 </div>

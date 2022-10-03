@@ -36,14 +36,14 @@
         td.slice, th.slice {
             border-right: solid 3px;
         }
-        .paginate_links a, .paginate_links span {
+        .paginate_links a {
             background-color: #1a1e21 !important;
             color: #ffffff;
             border-color: #373a3a !important;
         }
         .paginate_links span {
-            background-color: rgba(211, 211, 212, 0.42) !important;
-            color: #0F0E0F !important;
+            background-color: transparent !important;
+            border-color: #6c757d !important;
         }
     </style>
 </head>

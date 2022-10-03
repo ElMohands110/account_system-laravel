@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Sep 25, 2022 at 04:26 PM
+-- Generation Time: Sep 29, 2022 at 10:18 AM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -168,6 +168,28 @@ CREATE TABLE `login` (
 INSERT INTO `login` (`id`, `name`, `username`, `password`, `created_at`, `updated_at`) VALUES
 (1, 'STM Accountant', 'smarttarget', '$2y$10$NsT.a/uwlxF8vP6mYhq7outgL6T4bQ5/SzGZ8TyzA4OrPtgMIWama', '2022-09-19 09:33:36', '2022-09-19 07:33:36');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `voucher_entry`
+--
+
+CREATE TABLE `voucher_entry` (
+  `id` int(11) NOT NULL,
+  `account_name` varchar(50) NOT NULL,
+  `account_code` varchar(20) NOT NULL,
+  `description` text,
+  `credit` int(11) DEFAULT NULL,
+  `debit` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `to_account_name` varchar(50) NOT NULL,
+  `to_account_code` varchar(20) NOT NULL,
+  `to_description` text,
+  `to_credit` int(11) DEFAULT NULL,
+  `to_debit` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Indexes for dumped tables
 --
@@ -198,6 +220,12 @@ ALTER TABLE `login`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `voucher_entry`
+--
+ALTER TABLE `voucher_entry`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -205,7 +233,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `deed_of_arrest`
@@ -224,6 +252,12 @@ ALTER TABLE `exchange_voucher_registration`
 --
 ALTER TABLE `login`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `voucher_entry`
+--
+ALTER TABLE `voucher_entry`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
