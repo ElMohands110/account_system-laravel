@@ -64,6 +64,8 @@ Route::group(['middleware' => 'auth:accountant'], function () {
     Route::group(['prefix' => 'voucher-entry'], function () {
         Route::get('/', [VoucherEntryController::class, 'index'])->name('voucher_entry.index');
         Route::post('/', [VoucherEntryController::class, 'storeArrest'])->name('voucher_entry.store');
+        Route::get('/print', [VoucherEntryController::class, 'print'])->name('voucher_entry.print');
+        Route::get('/clear', [VoucherEntryController::class, 'clear'])->name('voucher_entry.clear');
         Route::post('/{id}', [VoucherEntryController::class, 'updateArrest'])->name('voucher_entry.update');
         Route::post('/destroy/{id}', [VoucherEntryController::class, 'destroyArrest'])->name('voucher_entry.destroy');
     });

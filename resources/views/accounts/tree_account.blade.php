@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <div class="accordion light" id="accordionExample">
 
-                    @foreach($father_acs as $father)
+                        @foreach($father_acs as $father)
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $father->id }}" aria-expanded="true" aria-controls="collapse{{ $father->id }}">[{{ $father->account_code }}] {{ $father->account_name }}</button>

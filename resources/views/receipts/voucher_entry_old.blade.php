@@ -13,11 +13,11 @@
                 <div class="card-header">
                     <div class="card-title">Voucher Entry</div>
                     <div>
+                        <a class="btn btn-warning" data-bs-toggle="modal" href="#exampleModalToggle" role="button">+</a>
                         @if(count($receipts) > 0)
-                            <a class="btn btn-primary" href="{{ route('voucher_entry.print') }}" target="_blank" role="button">Print</a>
                             <a class="btn btn-danger" href="{{ route('voucher_entry.clear') }}" target="_self" role="button">Clear For New Voucher</a>
+                            <a class="btn btn-primary" href="{{ route('voucher_entry.print') }}" target="_blank" role="button">Print</a>
                         @endif
-                        <a class="btn btn-warning" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Recording Voucher Entry</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -26,37 +26,23 @@
                             <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Account Name</th>
                                 <th>Account Code</th>
-                                <th>Credit</th>
+                                <th>Account Name</th>
                                 <th>Debit</th>
-                                <th>Description</th>
-                                <th>Control</th>
+                                <th>Credit</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td data-td="num"></td>
-                                    <td data-td="name"></td>
-                                    <td data-td="code"></td>
-                                    <td data-td="credit"></td>
-                                    <td data-td="debit"></td>
-                                    <td data-td="desc"></td>
-                                    <td>
-                                        <button class="btn btn-primary add_voucher">+</button>
-                                    </td>
-                                </tr>
+
                             @foreach($receipts as $receipt)
                                 <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td></td>
                                     <td>{{ $receipt->account_code }}</td>
                                     <td>{{ $receipt->account_name }}</td>
-                                    <td>{{ $receipt->credit }}</td>
-                                    <td>{{ $receipt->debit }}</td>
+                                    <td>{{ $receipt->debit ?? '0.0' }}</td>
+                                    <td>{{ $receipt->credit ?? '0.0' }}</td>
                                     <td>
-                                        <a class="btn badge gradient-green min-90 btn-sm mb-1" data-bs-toggle="modal" href="#editModelExample{{ $receipt->id }}" role="button">
-                                            edit
-                                        </a>
                                         <a data-bs-toggle="modal" href="#delete_receipt{{ $receipt->id }}" class="btn badge gradient-red min-90 btn-sm mb-1">
                                             delete
                                         </a>
@@ -82,7 +68,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             @endforeach
 
                             </tbody>
@@ -102,35 +87,32 @@
                 </div>
                 <div class="modal-body">
                     <div class="col-md-12 col-sm-12 col-12">
-                        <form action="{{ route('voucher_entry.store') }}" method="POST">
+                        <form action="{{ route('voucher_entry.store') }}" method="POST" id="myForm">
                             @csrf
-                            <div class="input-group mb-3 control-dark">
-                                <span class="input-group-text">Account Name</span>
-                                <select type="text" name="account_code" class="form-control" required>
-                                    <option hidden value="">-- choose account --</option>
-                                    @foreach($acs as $ac)
-                                        <option value="{{ $ac->account_code }}">{{ $ac->account_code }}- {{ $ac->account_name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
 
-                            <div class="col-md-12 col-sm-12 col-12 my_form">
+                            <div class="col-md-12 col-sm-12 col-12 my_form_4">
 
                                 <div class="input-group mb-3 control-dark">
-                                    <span class="input-group-text">Credit</span>
+                                    <select type="text" name="account_name" class="form-control" required>
+                                        <option hidden value="">-- choose account --</option>
+                                        @foreach($acs as $ac)
+                                            <option value="{{ $ac->account_name }}">{{ $ac->account_code }}- {{ $ac->account_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="input-group mb-3 control-dark">
+                                    <input type="text" name="debit" class="form-control" placeholder="Debit...">
+                                </div>
+
+                                <div class="input-group mb-3 control-dark">
                                     <input type="text" name="credit" class="form-control" placeholder="Credit...">
                                 </div>
 
                                 <div class="input-group mb-3 control-dark">
-                                    <span class="input-group-text">Debit</span>
-                                    <input type="text" name="debit" class="form-control" placeholder="Debit...">
+                                    <input type="text" name="description" class="form-control" placeholder="Write Description...">
                                 </div>
 
-                            </div>
-
-                            <div class="input-group mb-3 control-dark">
-                                <span class="input-group-text">Description</span>
-                                <textarea type="text" name="description" class="form-control" placeholder="Write Description..."></textarea>
                             </div>
 
                             <div class="form-group text-center custom-mt-form-group">
@@ -144,30 +126,64 @@
         </div>
     </div>
 
-    <script>
-        let tds = document.querySelectorAll('td')
-        let tr = document.createElement(tr)
-        let addBtn = document.querySelectorAll('.add_voucher')
-        tds.forEach((li) => {
-            if (li.innerHTML === '') {
-                if (li.dataset.td === 'name')
-                    li.innerHTML = '<input type="text" name="account_name">'
-                if (li.dataset.td === 'code')
-                    li.innerHTML = '<input type="text" name="account_code">'
-                if (li.dataset.td === 'desc')
-                    li.innerHTML = '<input type="text" name="description">'
-                if (li.dataset.td === 'debit')
-                    li.innerHTML = '<input type="text" name="debit">'
-                if (li.dataset.td === 'credit')
-                    li.innerHTML = '<input type="text" name="credit">'
-            }
-        })
-        addBtn.forEach((li) => {
-            li.addEventListener('click', (e) => {
-                document.querySelector('tbody').append(tr);
-            })
-        })
-
-    </script>
-
 @endsection
+
+{{--@section('script')--}}
+{{--    <script>--}}
+{{--        $(document).on('click', '#submit', function (e) {--}}
+{{--            e.preventDefault();--}}
+{{--            let items = [--}}
+{{--                $("select[name='account_name']").val(),--}}
+{{--                $("input[name='debit']").val(),--}}
+{{--                $("input[name='credit']").val(),--}}
+{{--                $("input[name='description']").val()--}}
+{{--            ]--}}
+{{--            // console.log(items)--}}
+{{--            let formData = new FormData($('#myForm')[0]);--}}
+
+{{--            let tr = document.createElement('tr')--}}
+{{--            let td = '';--}}
+{{--            let a = '';--}}
+
+
+{{--            $.ajax({--}}
+{{--                type: 'post',--}}
+{{--                url: "{{ route('voucher_entry.store') }}",--}}
+{{--                data: formData,--}}
+{{--                processData: false,--}}
+{{--                contentType: false,--}}
+{{--                cache: false,--}}
+{{--                success: function (data) {--}}
+{{--                    if(data.status) {--}}
+{{--                        $('#success-msg').show()--}}
+{{--                    }--}}
+{{--                    document.querySelector('tbody').append(tr)--}}
+{{--                    td = document.createElement('td')--}}
+{{--                    tr.append(td)--}}
+
+{{--                    for(let i=0;i<items.length;i++) {--}}
+{{--                        td = document.createElement('td')--}}
+{{--                        td.append(`${items[i]}`)--}}
+{{--                        tr.append(td)--}}
+{{--                    }--}}
+
+{{--                    td = document.createElement('td');--}}
+{{--                    a = document.createElement('a');--}}
+{{--                    a.classList.add('btn badge gradient-red min-90 btn-sm mb-1');--}}
+{{--                    a.textContent = 'delete';--}}
+{{--                    td.append(a);--}}
+{{--                    tr.append(td);--}}
+
+{{--                    $('#exampleModalToggle').modal('toggle');--}}
+
+{{--                    $("input[name='account_code']").val('');--}}
+{{--                    $("input[name='debit']").val('');--}}
+{{--                    $("input[name='credit']").val('');--}}
+{{--                    $("input[name='description']").val('');--}}
+
+{{--                },--}}
+{{--            });--}}
+{{--        });--}}
+
+{{--    </script>--}}
+{{--@endsection--}}

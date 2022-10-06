@@ -9,14 +9,16 @@ class AccountsController extends Controller
 {
     public function mainAccount() {
         $father_acs = Account::where('account_type', 0)->get();
-        $main_acs = Account::where('account_type', 1)->paginate(PAGINATE_SIZE);
-        return view('accounts.main_account', compact('father_acs', 'main_acs'));
+        $main_acs = Account::where('account_type', 1)->get();
+        $sub_acs = Account::where('account_type', 2)->get();
+        return view('accounts.main_account', compact('father_acs', 'main_acs', 'sub_acs'));
     }
 
     public function subAccount() {
         $main_acs = Account::where('account_type', 1)->get();
-        $sub_acs = Account::where('account_type', 2)->paginate(PAGINATE_SIZE);
-        return view('accounts.sub_account', compact('main_acs', 'sub_acs'));
+        $sub_acs = Account::where('account_type', 2)->get();
+        $father_acs = Account::where('account_type', 0)->get();
+        return view('accounts.sub_account', compact('main_acs', 'sub_acs', 'father_acs'));
     }
 
     public function treeAccount() {
@@ -36,40 +38,37 @@ class AccountsController extends Controller
             $father_main_account = Account::where('account_type', 0)->where('account_name', "$request->father_name")->first();
         }
 
-//        return $sub != null ? ++$sub->account_code . '<br>' . $main_sub_account->account_code . "001" : 201 . "001";
-
         Account::create([
-            'account_name' => $request->account_name,
+            'account_name' => "$request->account_name",
             'account_type' => $request->type,
             'account_code' => $request->type == 1 ? ($main != null ? ++$main->account_code : $father_main_account->account_code . '01') : ($sub != null ? ++$sub->account_code : $main_sub_account->account_code . '001'),
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'tel' => $request->tel,
-            'fax' => $request->fax,
-            'address' => $request->address,
-            'website' => $request->website,
+            'email' => "$request->email",
+            'phone' => "$request->phone",
+            'tel' => "$request->tel",
+            'fax' => "$request->fax",
+            'address' => "$request->address",
+            'website' => "$request->website",
             'invoice' => $request->invoice,
             'balance' => $request->balance,
-            'father_name' => $request->father_name,
-            'main_account' => $request->main_account,
+            'father_name' => "$request->father_name",
+            'main_account' => "$request->main_account",
         ]);
         return redirect()->back()->with('success', 'Account Created Successfully');
     }
 
     public function updateAccount(Request $request, $id) {
         Account::find($id)->update([
-            'account_name' => $request->account_name,
-            'account_code' => $request->account_code,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'tel' => $request->tel,
-            'fax' => $request->fax,
-            'address' => $request->address,
-            'website' => $request->website,
+            'account_name' => "$request->account_name",
+            'email' => "$request->email",
+            'phone' => "$request->phone",
+            'tel' => "$request->tel",
+            'fax' => "$request->fax",
+            'address' => "$request->address",
+            'website' => "$request->website",
             'invoice' => $request->invoice,
             'balance' => $request->balance,
-            'father_name' => $request->father_name,
-            'main_account' => $request->main_account,
+            'father_name' => "$request->father_name",
+            'main_account' => "$request->main_account",
         ]);
         return redirect()->back()->with('success', 'Account Updated Successfully');
     }

@@ -26,6 +26,11 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
         }
+        .my_form_4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
 
         .my_alert {
             position: fixed;
@@ -79,7 +84,7 @@
                         </div>
                     </li>
 
-                    <li class="sidebar-dropdown @if(Route::current()->getName() == 'deed_of_arrest.index' || Route::current()->getName() == 'exchange_voucher_registration.index' || Route::current()->getName() == 'voucher_entry')active @endif">
+                    <li class="sidebar-dropdown @if(Route::current()->getName() == 'deed_of_arrest.index' || Route::current()->getName() == 'exchange_voucher_registration.index' || Route::current()->getName() == 'voucher_entry.index')active @endif">
                         <a href="#">
                             <i class="icon-settings_input_svideo gradient-red"></i>
                             <span class="menu-text">{{ __('message.receipts') }}</span>
@@ -213,5 +218,6 @@
 <script src="{{ asset('vendor/apex/custom/home2/salesGraph.js') }}"></script>
 <script src="{{ asset('vendor/apex/custom/home2/sparklineGraphs.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
+@yield('script')
 </body>
 </html>

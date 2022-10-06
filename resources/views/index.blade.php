@@ -12,10 +12,14 @@
                         <div class="card-body">
                             <div class="sales-tile">
                                 <div class="sales-tile-block">
-                                    <div class="sales-tile-icon violet"><i
-                                            class="icon-supervised_user_circle"></i></div>
-                                    <div class="sales-tile-details"><h5>Main</h5>
-                                        <h2>250</h2><span>+5.8%</span></div>
+                                    <div class="sales-tile-icon violet">
+                                        <i class="icon-supervised_user_circle"></i>
+                                    </div>
+                                    <div class="sales-tile-details">
+                                        <h5>Main</h5>
+                                        <h2>250</h2>
+                                        <span>+5.8%</span>
+                                    </div>
                                 </div>
                                 <div id="customersGraph" class="apex-hide-lines"></div>
                             </div>
@@ -27,10 +31,14 @@
                         <div class="card-body">
                             <div class="sales-tile">
                                 <div class="sales-tile-block">
-                                    <div class="sales-tile-icon teal"><i class="icon-motion_photos_on"></i>
+                                    <div class="sales-tile-icon teal">
+                                        <i class="icon-motion_photos_on"></i>
                                     </div>
-                                    <div class="sales-tile-details"><h5>Products</h5>
-                                        <h2>185</h2><span>+4.9%</span></div>
+                                    <div class="sales-tile-details">
+                                        <h5>Products</h5>
+                                        <h2>185</h2>
+                                        <span>+4.9%</span>
+                                    </div>
                                 </div>
                                 <div id="customersGraph2" class="apex-hide-lines"></div>
                             </div>
@@ -42,10 +50,14 @@
                         <div class="card-body">
                             <div class="sales-tile">
                                 <div class="sales-tile-block">
-                                    <div class="sales-tile-icon green"><i class="icon-shopping_bag"></i>
+                                    <div class="sales-tile-icon green">
+                                        <i class="icon-shopping_bag"></i>
                                     </div>
-                                    <div class="sales-tile-details"><h5>Orders</h5>
-                                        <h2>600</h2><span>+8.2%</span></div>
+                                    <div class="sales-tile-details">
+                                        <h5>Orders</h5>
+                                        <h2>600</h2>
+                                        <span>+8.2%</span>
+                                    </div>
                                 </div>
                                 <div id="customersGraph3" class="apex-hide-lines"></div>
                             </div>
@@ -57,10 +69,14 @@
                         <div class="card-body">
                             <div class="sales-tile">
                                 <div class="sales-tile-block">
-                                    <div class="sales-tile-icon peach"><i
-                                            class="icon-settings_input_svideo"></i></div>
-                                    <div class="sales-tile-details"><h5>Signups</h5>
-                                        <h2>350</h2><span>+3.7%</span></div>
+                                    <div class="sales-tile-icon peach">
+                                        <i class="icon-settings_input_svideo"></i>
+                                    </div>
+                                    <div class="sales-tile-details">
+                                        <h5>Signups</h5>
+                                        <h2>350</h2>
+                                        <span>+3.7%</span>
+                                    </div>
                                 </div>
                                 <div id="customersGraph4" class="apex-hide-lines"></div>
                             </div>
